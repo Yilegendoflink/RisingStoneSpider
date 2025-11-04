@@ -59,8 +59,8 @@ class FF14RisingStonesSpider:
             
             browser_config = self.config.get('browser', {})
             
-            # 默认使用无头模式，除非配置中明确指定显示
-            headless = browser_config.get('headless', True)
+            # 默认使用可见模式，除非配置中明确指定无头模式
+            headless = browser_config.get('headless', False)
             if headless:
                 options.add_argument('--headless')
             
