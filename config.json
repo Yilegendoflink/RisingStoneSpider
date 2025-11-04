@@ -1,10 +1,41 @@
 {
-  "forum_url": "https://example.com/forum",
-  "user_profile_path": "/user/profile/{uid}",
-  "output_dir": "data",
-  "output_format": "json",
-  "rate_limit_seconds": 1,
-  "timeout": 10,
-  "max_retries": 3,
-  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    "browser": {
+        "headless": false,
+        "window_size": [1920, 1080],
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    },
+    "timeouts": {
+        "page_load": 30,
+        "element_wait": 10,
+        "dynamic_content": 15
+    },
+    "selectors": {
+        "player_name": [
+            ".character-name",
+            ".player-name", 
+            ".user-name",
+            "[class*='name']",
+            "h1", "h2", "h3"
+        ],
+        "server": [
+            ".server",
+            ".world", 
+            "[class*='server']",
+            "[class*='world']"
+        ],
+        "level": [
+            ".level",
+            "[class*='level']",
+            "[class*='lv']"
+        ],
+        "job": [
+            ".job",
+            ".class",
+            "[class*='job']",
+            "[class*='class']"
+        ]
+    },
+    "target_urls": [
+        "https://ff14risingstones.web.sdo.com/pc/index.html#/me/info?uuid=10001205"
+    ]
 }

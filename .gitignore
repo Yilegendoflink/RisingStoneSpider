@@ -1,45 +1,86 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
+# Python# Python
+
+__pycache__/__pycache__/
+
+*.py[cod]*.py[cod]
+
+*$py.class*$py.class
+
+*.so*.so
+
+.Python.Python
+
+env/env/
+
+venv/venv/
+
+ENV/ENV/
+
+build/build/
+
+dist/develop-eggs/
+
+downloads/dist/
+
+eggs/downloads/
+
+.eggs/eggs/
+
+lib/.eggs/
+
+lib64/lib/
+
+parts/lib64/
+
+sdist/parts/
+
+var/sdist/
+
+wheels/var/
+
+*.egg-info/wheels/
+
+.installed.cfg*.egg-info/
+
+*.egg.installed.cfg
+
 *.egg
 
-# Virtual Environment
-.venv/
-env/
-venv/
+# Spider outputs
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+output/# Virtual Environment
+
+spider_results_*.json.venv/
+
+screenshot_*.pngenv/
+
+page_source_*.htmlvenv/
+
+
+
+# IDE# IDE
+
+.vscode/.vscode/
+
+.idea/.idea/
+
+*.swp*.swp
+
+*.swo*.swo
+
 *~
 
-# Output data
-data/
+# OS
+
+.DS_Store# Output data
+
+Thumbs.dbdata/
+
 output/
-*.json
-*.csv
+
+# Logs*.json
+
+*.log*.csv
 !config.json
 
 # Logs
