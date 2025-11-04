@@ -123,62 +123,15 @@ class FF14RisingStonesSpider:
             print(f"✗ 加载登录态失败: {e}")
         return False
     
-    def setup_driver_for_login(self):
-        """为登录设置可见浏览器驱动"""
-        print("需要重新登录，启动可见浏览器...")
-        try:
-            # 关闭现有的无头浏览器
-            if self.driver:
-                self.driver.quit()
-            
-            options = Options()
-            browser_config = self.config.get('browser', {})
-            
-            # 强制显示浏览器用于登录
-            # options.add_argument('--headless') 不添加这行，让浏览器可见
-            
-            # 反检测设置
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-dev-shm-usage')
-            options.add_argument('--disable-blink-features=AutomationControlled')
-            options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            options.add_experimental_option('useAutomationExtension', False)
-            
-            # 设置用户代理
-            if 'user_agent' in browser_config:
-                options.add_argument(f'--user-agent={browser_config["user_agent"]}')
-            
-            # 设置窗口大小
-            if 'window_size' in browser_config:
-                width, height = browser_config['window_size']
-                options.add_argument(f'--window-size={width},{height}')
-            
-            self.driver = webdriver.Edge(options=options)
-            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            
-            return True
-            
-        except Exception as e:
-            print(f"启动可见浏览器失败: {e}")
-            return False
-    
     def wait_for_login(self):
-        """等待用户手动登录"""
-        # 切换到可见浏览器模式
-        if not self.setup_driver_for_login():
-            return False
-        
+        """等待用户在当前浏览器中完成登录"""
         print("\n" + "="*50)
         print("检测到需要登录")
-        print("已启动可见浏览器，请在浏览器中完成登录操作")
+        print("请在当前浏览器窗口中完成登录操作")
         print("登录完成后按Enter键继续...")
         print("="*50)
         
-        # 重新访问登录页面
-        current_url = self.driver.current_url
-        self.driver.get(current_url)
-        time.sleep(2)
-        
+        # 等待用户操作
         input("按Enter键继续...")
         
         # 检查登录状态
