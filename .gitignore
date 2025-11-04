@@ -1,48 +1,181 @@
-# Python# Python
+# Python# Python# Python# Python# Python
 
-__pycache__/__pycache__/
+__pycache__/
 
-*.py[cod]*.py[cod]
+*.py[cod]__pycache__/
 
-*$py.class*$py.class
+*$py.class
 
-*.so*.so
+*.so*.py[cod]__pycache__/
 
-.Python.Python
+.Python
 
-env/env/
+env/*$py.class
 
-venv/venv/
+venv/
 
-ENV/ENV/
+ENV/*.so*.py[cod]__pycache__/__pycache__/
 
-build/build/
+build/
 
-dist/develop-eggs/
+dist/.Python
 
-downloads/dist/
+downloads/
 
-eggs/downloads/
+eggs/env/*$py.class
 
-.eggs/eggs/
+.eggs/
 
-lib/.eggs/
+lib/venv/
 
-lib64/lib/
+lib64/
+
+parts/ENV/*.so*.py[cod]*.py[cod]
+
+sdist/
+
+var/build/
+
+wheels/
+
+*.egg-info/dist/.Python
+
+.installed.cfg
+
+*.eggdownloads/
+
+
+
+# Spider outputseggs/env/*$py.class*$py.class
+
+output/
+
+spider_results_*.json.eggs/
+
+page_source_*.html
+
+lib/venv/
+
+# Login state (contains sensitive data)
+
+cookies.pkllib64/
+
+analyzer_cookies.pkl
+
+parts/ENV/*.so*.so
+
+# IDE
+
+.vscode/sdist/
+
+.idea/
+
+*.swpvar/build/
+
+*.swo
+
+wheels/
+
+# OS
+
+.DS_Store*.egg-info/dist/.Python.Python
+
+Thumbs.db
+
+.installed.cfg
+
+# Logs
+
+*.log*.eggdownloads/
+
+
+
+# Spider outputseggs/env/env/
+
+output/
+
+spider_results_*.json.eggs/
+
+screenshot_*.png
+
+page_source_*.htmllib/venv/venv/
+
+
+
+# Login state (contains sensitive data)lib64/
+
+cookies.pkl
+
+analyzer_cookies.pklparts/ENV/ENV/
+
+
+
+# IDEsdist/
+
+.vscode/
+
+.idea/var/build/build/
+
+*.swp
+
+*.swowheels/
+
+
+
+# OS*.egg-info/dist/develop-eggs/
+
+.DS_Store
+
+Thumbs.db.installed.cfg
+
+
+
+# Logs*.eggdownloads/dist/
+
+*.log
+
+
+# Spider outputseggs/downloads/
+
+output/
+
+spider_results_*.json.eggs/eggs/
+
+screenshot_*.png
+
+page_source_*.htmllib/.eggs/
+
+
+
+# Login state (contains sensitive data)lib64/lib/
+
+cookies.pkl
 
 parts/lib64/
 
-sdist/parts/
+# IDE
 
-var/sdist/
+.vscode/sdist/parts/
+
+.idea/
+
+*.swpvar/sdist/
+
+*.swo
 
 wheels/var/
 
-*.egg-info/wheels/
+# OS
+
+.DS_Store*.egg-info/wheels/
+
+Thumbs.db
 
 .installed.cfg*.egg-info/
 
-*.egg.installed.cfg
+# Logs
+
+*.log*.egg.installed.cfg
 
 *.egg
 
