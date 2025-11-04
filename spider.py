@@ -8,6 +8,7 @@ RisingStoneSpider - 论坛用户信息爬虫
 import requests
 from bs4 import BeautifulSoup
 import json
+import csv
 import time
 import logging
 import os
@@ -102,6 +103,8 @@ class ForumSpider:
     def _build_profile_url(self, uid: str) -> str:
         """构建用户个人信息页URL"""
         base_url = self.config.get('forum_url', '')
+        if not base_url:
+            raise ValueError("配置中缺少 'forum_url'，请检查配置文件")
         profile_path = self.config.get('user_profile_path', '/user/profile/{uid}')
         profile_path = profile_path.format(uid=uid)
         return base_url.rstrip('/') + profile_path
@@ -122,38 +125,29 @@ class ForumSpider:
         # 基本信息提取（需要根据实际论坛结构调整）
         user_info = {
             'uid': uid,
-            'username': self._extract_text(soup, '.username', 'id', 'username'),
-            'posts_count': self._extract_text(soup, '.posts-count', 'class', 'posts-count'),
-            'registration_date': self._extract_text(soup, '.registration-date', 'class', 'reg-date'),
-            'last_active': self._extract_text(soup, '.last-active', 'class', 'last-active'),
-            'reputation': self._extract_text(soup, '.reputation', 'class', 'reputation'),
+            'username': self._extract_text(soup, '.username'),
+            'posts_count': self._extract_text(soup, '.posts-count'),
+            'registration_date': self._extract_text(soup, '.registration-date'),
+            'last_active': self._extract_text(soup, '.last-active'),
+            'reputation': self._extract_text(soup, '.reputation'),
             'profile_url': self._build_profile_url(uid)
         }
         
         return user_info
     
-    def _extract_text(self, soup: BeautifulSoup, selector: str, 
-                      attr_type: str = 'class', attr_value: str = None) -> str:
+    def _extract_text(self, soup: BeautifulSoup, selector: str) -> str:
         """
         从HTML中提取文本
         
         Args:
             soup: BeautifulSoup对象
             selector: CSS选择器
-            attr_type: 属性类型 ('class', 'id', 等)
-            attr_value: 属性值
             
         Returns:
             提取的文本，失败返回空字符串
         """
         try:
-            if attr_type == 'class':
-                element = soup.select_one(selector)
-            elif attr_type == 'id':
-                element = soup.find(id=attr_value)
-            else:
-                element = soup.find(attrs={attr_type: attr_value})
-            
+            element = soup.select_one(selector)
             return element.get_text(strip=True) if element else ""
         except Exception:
             return ""
@@ -210,7 +204,6 @@ class ForumSpider:
                 with open(filepath, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
             elif output_format == 'csv':
-                import csv
                 if data:
                     keys = data[0].keys()
                     with open(filepath, 'w', encoding='utf-8', newline='') as f:
