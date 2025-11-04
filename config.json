@@ -1,0 +1,10 @@
+{
+  "forum_url": "https://example.com/forum",
+  "user_profile_path": "/user/profile/{uid}",
+  "output_dir": "data",
+  "output_format": "json",
+  "rate_limit_seconds": 1,
+  "timeout": 10,
+  "max_retries": 3,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
